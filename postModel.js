@@ -8,3 +8,5 @@ const postsModel = mongoose.Schema({
     user: String,
     image: String
 })
+
+export default mongoose.model('posts', postsModel)
