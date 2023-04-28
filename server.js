@@ -11,7 +11,6 @@ const app  = express()
 const port = process.env.PORT || 9000
 
 //Pusher Configuration
-const Pusher = require("pusher");
 
 const pusher = new Pusher({
   appId: process.env.pusherID,
