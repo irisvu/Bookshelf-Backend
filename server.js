@@ -52,6 +52,10 @@ mongoose.connection.once('open', () => {
     })
 })
 
+app.get('/cors', (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+})
+
 
 //    * * * * * * * * * * * API Endpoints * * * * * * * * * * *    //
 app.get("/", (req, res) => res.status(200).send("Hello World!"))
