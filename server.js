@@ -84,7 +84,7 @@ app.get("/sync", (req, res) => {
 
 console.log('Triggering Pusher');
             pusher.trigger('posts', 'inserted', {
-                change: change
+                change:change
             }).then(response => {
                 if (response.status !== 200) {
                   throw Error("unexpected status")
