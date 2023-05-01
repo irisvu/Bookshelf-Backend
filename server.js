@@ -63,21 +63,21 @@ app.get("/", (req, res) => res.status(200).send("Hello World!"))
 //upload request
 app.post("/upload", (req, res) => {
     const dbPost = req.body
-    const data = Posts.create(dbPost);
-    data.then(function(err, data) {
+    Posts.create(dbPost).then(function(err, data) {
         if(err)
             res.status(500).send(err)
         else
-            res.status(201).send(data)});
+            res.status(201).send(data)
+    });
 })
 
 app.get("/sync", (req, res) => {
-    const data = Posts.find();
-    data.then(function(err, data) {
+    Posts.find().then(function(err, data) {
         if(err)
             res.status(500).send(err)
         else
-            res.status(200).send(data)});
+            res.status(200).send(data)
+    });
 })
 
 //Listener
