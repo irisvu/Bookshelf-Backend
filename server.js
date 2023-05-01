@@ -82,5 +82,25 @@ app.get("/sync", (req, res) => {
     });
 })
 
+console.log('Triggering Pusher');
+            pusher.trigger('posts', 'inserted', {
+                change: change
+            }).then(response => {
+                if (response.status !== 200) {
+                  throw Error("unexpected status")
+                }
+                // Parse the response body as JSON
+                return response.json()
+            })
+            .then(body => {
+            const channelsInfo = body.channels
+            // Do something with channelsInfo
+            })
+            .catch(error => {
+            // Handle error
+                console.log(error)
+            })
+
+
 //Listener
 app.listen(port, () => console.log(`listening on localhost:${port}`))
