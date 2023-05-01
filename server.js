@@ -44,8 +44,23 @@ mongoose.connection.once('open', () => {
         if(change.operationType === 'insert'){
             console.log('Triggering Pusher');
             pusher.trigger('posts', 'inserted', {
-                change: change
-            });
+                change:change
+            }).then(response => {
+                if (response.status !== 200) {
+                  throw Error("unexpected status")
+                }
+                // Parse the response body as JSON
+                return response.json()
+            })
+            .then(body => {
+            const channelsInfo = body.channels
+            // Do something with channelsInfo
+                console.log(channelsInfo)
+            })
+            .catch(error => {
+            // Handle error
+                console.log(error)
+            })
         } else {
             console.log('Error triggering Pusher');
         }
@@ -81,25 +96,6 @@ app.get("/sync", (req, res) => {
             res.status(200).send(data)
     });
 })
-
-console.log('Triggering Pusher');
-            pusher.trigger('posts', 'inserted', {
-                change:change
-            }).then(response => {
-                if (response.status !== 200) {
-                  throw Error("unexpected status")
-                }
-                // Parse the response body as JSON
-                return response.json()
-            })
-            .then(body => {
-            const channelsInfo = body.channels
-            // Do something with channelsInfo
-            })
-            .catch(error => {
-            // Handle error
-                console.log(error)
-            })
 
 
 //Listener
