@@ -55,7 +55,7 @@ mongoose.connection.once('open', () => {
             .then(body => {
             const channelsInfo = body.channels
             // Do something with channelsInfo
-                console.log(channelsInfo)
+                pusher.trigger("my-channel", "my-event", { message: "hello world" });
             })
             .catch(error => {
             // Handle error
