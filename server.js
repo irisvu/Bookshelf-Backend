@@ -35,6 +35,8 @@ mongoose.connect(process.env.connectionString, {
     useUnifiedTopology: true
 });
 
+pusher.trigger("my-channel", "my-event", { message: "hello world" });
+
 //connecting the database to pusher
 mongoose.connection.once('open', () => {
     console.log('DB connected');
