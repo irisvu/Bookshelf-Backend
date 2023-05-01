@@ -43,7 +43,7 @@ mongoose.connection.once('open', () => {
     const changeStream = mongoose.connection.collection('posts').watch();
     changeStream.on('change', (change) => {
         console.log(change);
-        pusher.trigger("my-channel", "my-event", { message: "hello world2" });
+        pusher.trigger("my-channel", "my-event", { message: change });
         if(change.operationType === 'insert'){
             console.log('Triggering Pusher');
             pusher.trigger('posts', 'inserted', {
@@ -58,7 +58,7 @@ mongoose.connection.once('open', () => {
             .then(body => {
             const channelsInfo = body.channels
             // Do something with channelsInfo
-                pusher.trigger("my-channel", "my-event", { message: "hello world" });
+                pusher.trigger("my-channel", "my-event", { message: channelsInfo });
             })
             .catch(error => {
             // Handle error
