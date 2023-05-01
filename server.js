@@ -52,9 +52,9 @@ mongoose.connection.once('open', () => {
     })
 })
 
-app.get('/cors', (req, res) => {
+/*app.get('/cors', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
-})
+})*/
 
 
 //    * * * * * * * * * * * API Endpoints * * * * * * * * * * *    //
