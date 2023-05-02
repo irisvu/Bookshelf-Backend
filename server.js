@@ -83,9 +83,9 @@ app.post("/upload", (req, res) => {
     const dbPost = req.body
     Posts.create(dbPost).then(function(err, data) {
         if(err)
-            res.status(500).send(err)
+            res.status(500).send(err);
         else
-            res.status(201).send(data)
+            res.status(201).send(data);
     });
 })
 
@@ -94,9 +94,9 @@ app.get("/sync", (req, res) => {
     Posts.find().then(function(err, data) {
         console.log("Inside then. Not certain if this is going to work out :'(")
         if(err)
-            res.status(500).send(err)
+            res.status(500).send(err);
         else
-            res.status(200).send(data)
+            res.status(200).send(data);
     });
 })
 
