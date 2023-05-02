@@ -87,7 +87,7 @@ app.post("/upload", (req, res) => {
         else
             res.status(201).send(data);
     });
-})
+});
 
 app.get("/sync", (req, res) => {
     console.log("Inside sync. Not certain if this is going to work out :'(")
@@ -95,13 +95,13 @@ app.get("/sync", (req, res) => {
         console.log("Inside then. Not certain if this is going to work out :'(")
         if(err){
             //return res.json({ success: false, message: 'ERROR?'});
-            res.status(500).send(err);
+            res.status(200).send(err);
         } 
         else{
-        res.status(200).json(data);
+            res.status(500).json(data);
         }
     });
-})
+});
 
 
 //Listener
