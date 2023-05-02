@@ -94,8 +94,8 @@ app.get("/sync", (req, res) => {
     Posts.find().then(function(err, data) {
         console.log("Inside then. Not certain if this is going to work out :'(")
         if(err){
-            return res.json({ success: false, message: 'ERROR?'});
-            //res.status(500).send(err);
+            //return res.json({ success: false, message: 'ERROR?'});
+            res.status(500).send(err);
         } 
         else{
         res.status(200).json(data);
