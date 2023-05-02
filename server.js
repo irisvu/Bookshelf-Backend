@@ -93,10 +93,12 @@ app.get("/sync", (req, res) => {
     console.log("Inside sync. Not certain if this is going to work out :'(")
     Posts.find().then(function(err, data) {
         console.log("Inside then. Not certain if this is going to work out :'(")
-        if(err)
+        if(err){
             res.status(500).send(err);
-        else
-            res.status(200).json(data);
+        } 
+        else{
+        res.status(200).json(data);
+        }
     });
 })
 
